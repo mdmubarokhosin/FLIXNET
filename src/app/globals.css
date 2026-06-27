@@ -1,0 +1,360 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ===== LIGHT THEME (default :root) ===== */
+:root {
+  --radius: 0.5rem;
+  --background: #f4f5f7;
+  --foreground: #14161a;
+  --card: #ffffff;
+  --card-foreground: #14161a;
+  --popover: #ffffff;
+  --popover-foreground: #14161a;
+  --primary: #e50914;
+  --primary-foreground: #ffffff;
+  --secondary: #e9ecef;
+  --secondary-foreground: #14161a;
+  --muted: #eef0f3;
+  --muted-foreground: #5b616e;
+  --accent: #e9ecef;
+  --accent-foreground: #14161a;
+  --destructive: #e50914;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: rgba(0, 0, 0, 0.08);
+  --ring: #e50914;
+  --chart-1: #e50914;
+  --chart-2: #ff8c42;
+  --chart-3: #14161a;
+  --chart-4: #4a90d9;
+  --chart-5: #7b61ff;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #14161a;
+  --sidebar-primary: #e50914;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #eef0f3;
+  --sidebar-accent-foreground: #14161a;
+  --sidebar-border: rgba(0, 0, 0, 0.1);
+  --sidebar-ring: #e50914;
+  --flix-primary: #e50914;
+  --flix-bg: #f4f5f7;
+  /* soft surface for subtle raised elements */
+  --surface-soft: #fafbfc;
+  --surface-muted: #eef0f3;
+  --skeleton-from: #e9ecef;
+  --skeleton-to: #f4f5f7;
+  --navbar-bg: rgba(255, 255, 255, 0.85);
+  --overlay: rgba(0, 0, 0, 0.5);
+}
+
+/* ===== DARK THEME ===== */
+.dark {
+  --background: #0f0f0f;
+  --foreground: #f5f5f5;
+  --card: #181818;
+  --card-foreground: #f5f5f5;
+  --popover: #181818;
+  --popover-foreground: #f5f5f5;
+  --primary: #e50914;
+  --primary-foreground: #ffffff;
+  --secondary: #2a2a2a;
+  --secondary-foreground: #f5f5f5;
+  --muted: #1a1a1a;
+  --muted-foreground: #b3b3b3;
+  --accent: #2a2a2a;
+  --accent-foreground: #f5f5f5;
+  --destructive: #e50914;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #e50914;
+  --chart-1: #e50914;
+  --chart-2: #ff8c42;
+  --chart-3: #f5f5f5;
+  --chart-4: #4a90d9;
+  --chart-5: #7b61ff;
+  --sidebar: #181818;
+  --sidebar-foreground: #f5f5f5;
+  --sidebar-primary: #e50914;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #2a2a2a;
+  --sidebar-accent-foreground: #f5f5f5;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-ring: #e50914;
+  --flix-bg: #0f0f0f;
+  --surface-soft: #1a1a1a;
+  --surface-muted: #1a1a1a;
+  --skeleton-from: #1a1a1a;
+  --skeleton-to: #2a2a2a;
+  --navbar-bg: rgba(15, 15, 15, 0.85);
+  --overlay: rgba(0, 0, 0, 0.6);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html,
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    min-height: 100%;
+  }
+  body {
+    @apply antialiased;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--muted-foreground);
+  opacity: 0.4;
+  border-radius: 6px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #333;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e50914;
+}
+
+/* Hide scrollbar for horizontal rows */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Hover scale for cards */
+.card-hover {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease;
+}
+.card-hover:hover {
+  transform: scale(1.06);
+  z-index: 20;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+/* Swiper overrides */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff !important;
+  background: rgba(0, 0, 0, 0.5);
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50%;
+  padding: 0 !important;
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 18px !important;
+  font-weight: bold;
+}
+
+/* Line clamp helpers */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Hero gradient overlays — always dark for text legibility over images */
+.hero-gradient {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 40%,
+    rgba(0, 0, 0, 0.7) 80%,
+    var(--background) 100%
+  );
+}
+.hero-gradient-left {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.55) 40%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* Skeleton shimmer (theme-aware) */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, var(--skeleton-from) 25%, var(--skeleton-to) 50%, var(--skeleton-from) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Video player controls (always dark for immersive viewing) */
+.player-control-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #fff;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+.player-control-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+.player-control-btn:active {
+  transform: scale(0.92);
+}
+
+/* Hide native video controls */
+video::-webkit-media-controls {
+  display: none !important;
+}
+video::-webkit-media-controls-enclosure {
+  display: none !important;
+}
+
+/* Utility: subtle card border for light mode legibility */
+.card-ring {
+  box-shadow: 0 0 0 1px var(--border);
+}
+
+/* Theme-aware round icon button for navigation contexts (navbar, admin bar).
+   Unlike .player-control-btn (which is always white — meant for the dark
+   video player surface), .nav-icon-btn adapts to the current theme so icons
+   stay visible in both light and dark mode. */
+.nav-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  color: var(--foreground);
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+.nav-icon-btn:hover {
+  background: color-mix(in srgb, var(--foreground) 12%, transparent);
+}
+.nav-icon-btn:active {
+  transform: scale(0.92);
+}
+
+/* TrendingCarousel — pagination dots */
+.tc-swiper .tc-bullet {
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  background: var(--muted-foreground);
+  opacity: 0.4;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-block;
+  margin: 0 3px !important;
+}
+.tc-swiper .tc-bullet:hover {
+  opacity: 0.7;
+}
+.tc-swiper .tc-bullet-active {
+  width: 22px;
+  background: var(--primary);
+  opacity: 1;
+}
+.tc-swiper .swiper-pagination {
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  position: absolute !important;
+  text-align: center;
+}
+
+/* RecommendedSlider — pagination dots (slightly larger, pill-shaped active) */
+.rs-swiper .rs-bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: var(--muted-foreground);
+  opacity: 0.4;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-block;
+  margin: 0 3px !important;
+}
+.rs-swiper .rs-bullet:hover {
+  opacity: 0.75;
+  transform: scale(1.1);
+}
+.rs-swiper .rs-bullet-active {
+  width: 26px;
+  background: var(--primary);
+  opacity: 1;
+}
+.rs-swiper .swiper-pagination {
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  position: absolute !important;
+  text-align: center;
+}
